@@ -27,11 +27,11 @@ if authentication_status:
     st.button(Button[0])
     st.button(Button[1])
     st.button(Button[2])
-    if st.button(Button[0]):  ### add admin
-        pass
-    elif st.button(Button[1]):  ### add teacher
-        pass
-    elif st.button(Button[2]):  ### add student
+#     if st.button(Button[0]):  ### add admin
+#         pass
+#     elif st.button(Button[1]):  ### add teacher
+#         pass
+    if st.button(Button[2]):  ### add student
         file1 = open("student_data.csv")
         df_students = pd.DataFrame(file1)  
         file1.close()
