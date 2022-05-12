@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-st.title("Dexcom Student System")
+st.title("Dexcom Students System")
 ######### Global variables  ##########
 names = ['Admin','Teacher']
 usernames = ['admin','teacher']
@@ -28,11 +28,8 @@ name, authentication_status, username = authenticator.login('Login','main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write('## Welcome *%s*' % (name))
-    st.write("## Show Pervious Data")
     file1 = open("student_data.csv")
-    df_students = pd.DataFrame(file1)   #pd.read_csv("student_data.csv")
-    st.write(df_students)
-    st.write(df_students.shape)
+    df_students = pd.DataFrame(file1)  
     file1.close()
 
     student_id = st.sidebar.text_input("Student ID")
@@ -59,7 +56,7 @@ if authentication_status:
                        "Student_Subject": student_subject})
 
     df_students = pd.DataFrame(get_data())
-    st.write("## Show New Data")
+    st.write("## Show Dataset")
     st.write(df_students)
     st.write(df_students.shape)
 
@@ -80,68 +77,3 @@ elif authentication_status == False:
 elif authentication_status == None:
     st.warning('Please enter your username and password')
     
-# if st.session_state['authentication_status']:
-#     authenticator.logout('Logout', 'main')
-#     st.write('Welcome *%s*' % (st.session_state['name']))
-    
-# elif st.session_state['authentication_status'] == False:
-#     st.error('Username/password is incorrect')
-# elif st.session_state['authentication_status'] == None:
-#     st.warning('Please enter your username and password')
-
-######################
-
-# select = st.selectbox('Select', ('About', 'Login'), 0)
-
-# username = st.text_input("Username")
-# password = st.text_input("password")
-# if select == 'About':
-#     st.info('This system to enter student ,Class, subjects')
-# else :
-#     st.write("## Login")
-#     if username == "admin" and password == "admin" :
-#         st.empty(select)
-
-#button = st.button('button')
-# if button == 1 :
-#     page = 'Plot'  # does not work
-
-# st.write("# test")
-# with st.empty():
-#     box = st.number_input("enter number")
-#     time.sleep(10)
-#     if box == 1 :
-#         st.empty()
-#     else:
-#         st.write("The pass wrong")
-        
-    
-
-
-
-# placeholder = st.empty()
-
-# # Replace the placeholder with some text:
-# placeholder.text("Hello")
-
-# # Replace the text with a chart:
-# placeholder.line_chart({"data": [1, 5, 2, 6]})
-
-# # Replace the chart with several elements:
-# with placeholder.container():
-#      st.write("This is one element")
-#      st.write("This is another")
-
-# # Clear all those elements:
-# placeholder.empty()
-
-
-
-
-# import time
-
-# with st.empty():
-#      for seconds in range(60):
-#          st.write(f"⏳ {seconds} seconds have passed")
-#          time.sleep(1)
-#      st.write("✔️ 1 minute over!")
