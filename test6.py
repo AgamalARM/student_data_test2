@@ -11,8 +11,6 @@ st.title("Dexcom Students System")
 names = ['Admin','Teacher']
 usernames = ['admin','teacher']
 passwords = ['123','456']
-
-Button = ["Add Admin","Add Teacher","Add Student"]
 ##################################
 hashed_passwords = stauth.Hasher(passwords).generate()
 authenticator = stauth.Authenticate(names,usernames,hashed_passwords,
@@ -24,14 +22,13 @@ name, authentication_status, username = authenticator.login('Login','main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write('## Welcome *%s*' % (name))
-    st.button(Button[0])
-    st.button(Button[1])
-    st.button(Button[2])
-#     if st.button(Button[0]):  ### add admin
-#         pass
-#     elif st.button(Button[1]):  ### add teacher
-#         pass
-    if st.button(Button[2]):  ### add student
+    select_item = st.radio("## What is Dataset you want?",
+                          ("Add Admin", "Add Teacher", "Add Student"))
+    if select_item == "Add Admin":      ### add admin
+        pass
+    elif select_item == "Add Teacher":  ### add teacher
+        pass
+    if select_item == "Add Student":    ### add student
         file1 = open("student_data.csv")
         df_students = pd.DataFrame(file1)  
         file1.close()
