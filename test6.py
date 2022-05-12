@@ -44,9 +44,18 @@ if authentication_status:
         return []
 
 
-##reading_value = st.sidebar.number_input('The reading from Dexcom sensor')
+#     if st.button("Add Student"):
+#         get_data().append({"Student_ID": student_id, 
+#                        "Student_Name": student_name, 
+#                        "Student_Phone": student_phone,
+#                        "Student_Email": student_email,
+#                        "Student_Class_Name": student_class_name,
+#                        "Student_Subject": student_subject})
 
-
+    df_students = pd.DataFrame(get_data())
+    st.write("## Show Dataset")
+    st.write(df_students)
+    st.write(df_students.shape)
     if st.button("Add Student"):
         get_data().append({"Student_ID": student_id, 
                        "Student_Name": student_name, 
@@ -54,11 +63,6 @@ if authentication_status:
                        "Student_Email": student_email,
                        "Student_Class_Name": student_class_name,
                        "Student_Subject": student_subject})
-
-    df_students = pd.DataFrame(get_data())
-    st.write("## Show Dataset")
-    st.write(df_students)
-    st.write(df_students.shape)
 
 ### convert df to csv and save it    ###
     def convert_df(df_students):
