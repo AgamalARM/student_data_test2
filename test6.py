@@ -66,7 +66,7 @@ if authentication_status:
 
 
     csv1 = convert_df(df_students)
-    st.write(csv1)
+    #st.write(csv1)
 
     file2 = open('student_data.csv')
     df_students.to_csv (r'student_data.csv', index = False, header=True)
