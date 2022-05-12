@@ -22,7 +22,8 @@ name, authentication_status, username = authenticator.login('Login','main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write('## Welcome *%s*' % (name))
-    select_item = st.radio("##What is Dataset you want?",
+    st.write("### What is Dataset you want?")
+    select_item = st.radio("Please select Dataset",
                           ("Add Admin", "Add Teacher", "Add Student"))
     if select_item == "Add Admin":      ### add admin
         pass
